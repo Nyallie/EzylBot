@@ -1,5 +1,5 @@
 # EzylBot
-Un simple bot Discord pour mon serveur.
+Un simple bot Discord pour mon serveur AethelMeth.
 
 Ce qu'il peut faire :
 - Il permet de Mute/UnMute des User,
