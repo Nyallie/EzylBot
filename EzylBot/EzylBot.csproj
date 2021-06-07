@@ -4,6 +4,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <StartupObject>EzylBot.Program</StartupObject>
+    <ApplicationIcon>Ezyl.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
