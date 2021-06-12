@@ -43,7 +43,7 @@ namespace EzylBot.Modules
                 footerBuilder.WithText(Context.User.Username).WithIconUrl(Context.User.GetAvatarUrl());
                 embedBuilder.WithTitle($"AMONG US")
                     .WithDescription($"{role.Mention} à {heure}! \n" +
-                    $"Réagir avec {emote} pour vous inscrire (vous avez 2h pour réagir)!\n" +
+                    $"**Réagissez avec {emote} pour vous inscrire !**\n" +
                     $"S'il on est plus de 8, on va sur Airship." +
                     $"\n*Mp {Context.User.Mention} si vous voulez join en cour de route.*");
                 string message = "- Avoir [Better CrewLink](https://github.com/OhMyGuus/BetterCrewLink/releases/) **à jour**, " +

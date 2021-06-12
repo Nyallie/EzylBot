@@ -137,21 +137,27 @@ namespace EzylBot.Modules
         [RequireBotPermission(GuildPermission.BanMembers)]
         public async Task Ban(IGuildUser user = null, [Remainder] string reason = null)
         {
-            if (user == null) await ReplyAsync("You need to specify a user.");
-            if (reason == null) reason = "No reason specified.";
-            SocketGuild guild = ((SocketGuildChannel)Context.Message.Channel).Guild;
-            IEmote emote = guild.Emotes.First(e => e.Name == "GunRushia");
-            EmbedBuilder embedBuilder = new EmbedBuilder()
-                .WithCurrentTimestamp()
-                .WithDescription($"{user.Mention} a été banni. {emote}")
-                .AddField("Raison :", reason);
-            EmbedAuthorBuilder embedAuthor = new EmbedAuthorBuilder()
-                .WithName(Context.User.Mention)
-                .WithIconUrl(Context.User.GetAvatarUrl());
-            embedBuilder.WithAuthor(embedAuthor);
-            Embed embed = embedBuilder.Build();
-            await ReplyAsync(embed: embed);
-            await Context.Guild.AddBanAsync(user, 0, reason);
+            if (user == null)
+            {
+                await ReplyAsync("You need to specify a user.");
+            }
+            else 
+            {
+                if (reason == null) reason = "No reason specified.";
+                SocketGuild guild = ((SocketGuildChannel)Context.Message.Channel).Guild;
+                IEmote emote = guild.Emotes.First(e => e.Name == "GunRushia");
+                EmbedBuilder embedBuilder = new EmbedBuilder()
+                    .WithCurrentTimestamp()
+                    .WithDescription($"{user.Mention} a été banni. {emote}")
+                    .AddField("Raison :", reason);
+                EmbedAuthorBuilder embedAuthor = new EmbedAuthorBuilder()
+                    .WithName(Context.User.Mention)
+                    .WithIconUrl(Context.User.GetAvatarUrl());
+                embedBuilder.WithAuthor(embedAuthor);
+                Embed embed = embedBuilder.Build();
+                await ReplyAsync(embed: embed);
+                await Context.Guild.AddBanAsync(user, 0, reason);
+            }
         }
     }
 }
