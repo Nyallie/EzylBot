@@ -12,7 +12,8 @@ namespace EzylBot.Modules
 {
     public class Admin: ModuleBase<SocketCommandContext>
     {
-        private static ulong muterole = 838386485081669632;
+        private static ulong muteFauteGraveRole = 838386485081669632;
+        private static ulong muteGetMutedrole = 851938008755994695;
         private static ulong memberrole = 731953332909768794;
         private static Color _color=new Color(156, 40, 40);
 
@@ -23,7 +24,7 @@ namespace EzylBot.Modules
         public async Task MuteUser(IGuildUser user=null)
         {
             if (user == null) await ReplyAsync("You need to specify a User.");
-            await user.AddRoleAsync(muterole);
+            await user.AddRoleAsync(muteGetMutedrole);
             await user.RemoveRoleAsync(memberrole);
             EmbedBuilder embedBuilder = new EmbedBuilder()
                 .WithCurrentTimestamp()
@@ -43,7 +44,7 @@ namespace EzylBot.Modules
         {
             if (user == null) await ReplyAsync("You need to specify a User.");
             await user.AddRoleAsync(memberrole);
-            await user.RemoveRoleAsync(muterole);
+            await user.RemoveRoleAsync(muteGetMutedrole);
             EmbedBuilder embedBuilder = new EmbedBuilder()
                 .WithCurrentTimestamp()
                 .WithDescription($"Get UnCoomed {user.Mention}!")
@@ -94,6 +95,40 @@ namespace EzylBot.Modules
                 Embed embed = EmbedBuilder.Build();
                 await ReplyAsync(embed: embed);
             }
+        }
+
+        [Command("mute")]
+        [Summary("mute someone pinged")]
+        [RequireUserPermission(GuildPermission.ManageRoles)]
+        [RequireBotPermission(GuildPermission.ManageRoles)]
+        public async Task Mute(IGuildUser user = null)
+        {
+            if (user == null) await ReplyAsync("You need to specify a User.");
+            await user.AddRoleAsync(muteFauteGraveRole);
+            await user.RemoveRoleAsync(memberrole);
+            EmbedBuilder embedBuilder = new EmbedBuilder()
+                .WithCurrentTimestamp()
+                .WithDescription($"{user.Mention}, tu as commis une faute grave. Tu es mute.")
+                .WithColor(_color);
+            Embed embed = embedBuilder.Build();
+            await ReplyAsync(embed: embed);
+        }
+
+        [Command("unmute")]
+        [Summary("unmute someone pinged")]
+        [RequireUserPermission(GuildPermission.ManageRoles)]
+        [RequireBotPermission(GuildPermission.ManageRoles)]
+        public async Task UnMute(IGuildUser user = null)
+        {
+            if (user == null) await ReplyAsync("You need to specify a User.");
+            await user.AddRoleAsync(memberrole);
+            await user.RemoveRoleAsync(muteFauteGraveRole);
+            EmbedBuilder embedBuilder = new EmbedBuilder()
+                .WithCurrentTimestamp()
+                .WithDescription($"{user.Mention}, ta sanction est fini, tu peux de nouveaux parler sur tout le serveur.")
+                .WithColor(_color);
+            Embed embed = embedBuilder.Build();
+            await ReplyAsync(embed: embed);
         }
     }
 }

@@ -53,15 +53,11 @@ namespace EzylBot.Modules
                 if (extraDescrip != null) message = message + "\n - " + extraDescrip;
                 embedBuilder.AddField("Important !", message);
                 embedBuilder.WithFooter(footerBuilder).WithCurrentTimestamp();
-
                 Embed embed = embedBuilder.Build();
-                IMessage messageEvent = await ReplyAsync(embed: embed);
+                IMessage messageEvent = await ReplyAsync(role.Mention,embed: embed);
                 await messageEvent.AddReactionAsync(emote);
-                
-                
-
-                IEnumerable<IUser> usersGet = await messageEvent.GetReactionUsersAsync(emote, 10).FlattenAsync<IUser>();
-                List<IUser> users = usersGet.ToList<IUser>();
+                //IEnumerable<IUser> usersGet = await messageEvent.GetReactionUsersAsync(emote, 10).FlattenAsync<IUser>();
+                //List<IUser> users = usersGet.ToList<IUser>();
             }
         }
     }
