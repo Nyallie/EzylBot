@@ -18,16 +18,16 @@ namespace EzylBot.Modules
             {
                 string url = Context.User.GetAvatarUrl(ImageFormat.Auto,4096);
                 string name = Context.User.Username;
-                embedBuilder.WithTitle("name")
-                    .WithDescription($"[Link]({url})")
+                embedBuilder.WithTitle(name)
+                    .WithDescription($"[Lien direct]({url})")
                     .WithImageUrl(url);
             }
             else
             {
                 string url = user.GetAvatarUrl(ImageFormat.Auto, 4096);
                 string name = user.Username;
-                embedBuilder.WithTitle("name")
-                    .WithDescription($"[Link]({url})")
+                embedBuilder.WithTitle(name)
+                    .WithDescription($"[Lien direct]({url})")
                     .WithImageUrl(url);
             }
             Embed embed = embedBuilder.Build();
