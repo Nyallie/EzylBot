@@ -23,6 +23,7 @@ namespace EzylBot.Modules
                 await ReplyAsync("Please say something after the command you bitch...");
             }
             await ReplyAsync(message);
+            await Context.Message.DeleteAsync();
         }
 
         [Command("amongus", RunMode=RunMode.Async)]
