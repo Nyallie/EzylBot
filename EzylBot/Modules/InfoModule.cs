@@ -105,19 +105,6 @@ namespace EzylBot.Modules
             await ReplyAsync(embed: embed);
         }
 
-        [Command("invite")]
-        [Summary("Get an invite link for the bot.")]
-        public async Task InviteBot()
-        {
-            var EmbedBuilder = new EmbedBuilder()
-                .WithDescription("Pour m'inviter sur votre serveur !\n" +
-                "[Invite moi !](https://discord.com/api/oauth2/authorize?client_id=806953247574327356&permissions=402484983&scope=bot)")
-                .WithThumbnailUrl(Context.Client.CurrentUser.GetAvatarUrl())
-                .WithColor(_color);
-            Embed embed = EmbedBuilder.Build();
-            await ReplyAsync(embed: embed);
-        }
-
         [Command("avatar")]
         [Summary("Give link to the discord avatar")]
         public async Task Avatar(IGuildUser user = null)
