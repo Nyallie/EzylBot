@@ -68,7 +68,8 @@ namespace EzylBot
             var commandName = command.IsSpecified ? command.Value.Name : "A command";
             await _log.LogAsync(new LogMessage(LogSeverity.Info,
                 "CommandExecution",
-                $"{commandName} was executed at {DateTime.Now} by {context.User.Username}#{context.User.Discriminator}."));
+                $"{commandName} was executed at {DateTime.Now} by {context.User.Username}#{context.User.Discriminator}.\n" +
+                $"{context.Message}"));
         }
     }
 }

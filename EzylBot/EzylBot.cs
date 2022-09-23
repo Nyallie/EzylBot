@@ -24,7 +24,6 @@ namespace EzylBot
         private CommandHandler _commandHandler;
         private CommandServiceConfig _commandConfig;
         private InteractionHandler _interactionHandler;
-        private InteractionServiceConfig _interactionService;
 
         public async Task Run()
         {

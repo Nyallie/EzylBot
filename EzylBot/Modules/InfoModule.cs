@@ -23,19 +23,20 @@ namespace EzylBot.Modules
         [Summary("Get a list of all command or, if you give a command name after help\n" +
             "like : help help, \n" +
             "this will give you a summary of the gived command name.")]
-        public async Task HelpCommand(string commandtest=null)
+        public async Task HelpCommand(string commandtest = null)
         {
             List<CommandInfo> commands = _command.Commands.ToList();
             EmbedBuilder embedBuilder = new EmbedBuilder()
                     .WithCurrentTimestamp()
-                    .WithDescription("Here's the commands :")
                     .WithColor(_color);
             if (commandtest == null)
             {
+                embedBuilder.WithDescription("Here's the commands :");
                 string infomodule = "";
                 string musicmodule = "";
                 string adminmodule = "";
                 string funmodule = "";
+                string reactmodule = "";
                 for (int a = 0; a < commands.Count; a++)
                 {
                     CommandInfo command = commands[a];
@@ -53,6 +54,9 @@ namespace EzylBot.Modules
                         case "Fun":
                             funmodule = funmodule + command.Name + ", ";
                             break;
+                        case "React":
+                            reactmodule = reactmodule + command.Name + ", ";
+                            break;
                         default:
                             break;
                     }
@@ -65,6 +69,7 @@ namespace EzylBot.Modules
                 embedBuilder.AddField("Info :", infomodule);
                 embedBuilder.AddField("Fun commands :", funmodule);
                 embedBuilder.AddField("Music (In dev) :", musicmodule);
+                embedBuilder.AddField("Gif stuff :", reactmodule);
             }
             else
             {
