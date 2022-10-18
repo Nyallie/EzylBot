@@ -37,7 +37,7 @@ namespace EzylBot.Modules
 
         [Command("urban")]
         [Summary("Get the urban def of any word you want")]
-        public async Task Urban(string word = null)
+        public async Task Urban([Remainder]string word = null)
         {
             UrbanList list;
             EmbedBuilder embed = new EmbedBuilder();
@@ -59,12 +59,14 @@ namespace EzylBot.Modules
                     string result = await content.ReadAsStringAsync();
                     list = JsonConvert.DeserializeObject<UrbanList>(result);
                     Random random = new Random();
-                    Urban urban= list.List[random.Next(1,6)];
+                    Urban urban= list.List[random.Next(1,list.List.Count)];
+                    string def= urban.Definition.Replace("[","").Replace("]","");
+                    string ex = urban.Example.Replace("[", "").Replace("]", "");
                     embed
                         .WithTitle(urban.Word)
                         .WithUrl(urban.Permalink)
-                        .WithDescription(urban.Definition)
-                        .AddField("Example :",urban.Example)
+                        .WithDescription(def)
+                        .AddField("Example :",ex)
                         .WithAuthor(author)
                         .WithCurrentTimestamp()
                         .WithColor(_color)

@@ -40,7 +40,7 @@ namespace EzylBot.Modules
             }
         }
 
-        [Command("uncoom")]
+        [Command("unmute")]
         [Summary("UnMute a specified user.")]
         [RequireUserPermission(GuildPermission.ManageRoles)]
         [RequireBotPermission(GuildPermission.ManageRoles)]

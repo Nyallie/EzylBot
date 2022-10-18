@@ -51,7 +51,14 @@ namespace EzylBot.Modules
             string message = "";
             if (user == null)
             {
-                message = $"You want to be bite {Context.User.Mention} ? Okay...";
+                if (Context.Message.ReferencedMessage != null)
+                {
+                    message = $"{Context.User.Mention} has bitten {Context.Message.ReferencedMessage.Author.Mention}";
+                }
+                else
+                {
+                    message = $"You want to be bite {Context.User.Mention} ? Okay...";
+                }
             }
             else
             {
@@ -68,7 +75,14 @@ namespace EzylBot.Modules
             string message = "";
             if (user == null)
             {
-                message = $"{Context.User.Mention} is really comfy....";
+                if (Context.Message.ReferencedMessage != null)
+                {
+                    message = $"{Context.Message.ReferencedMessage.Author.Mention} look ! {Context.User.Mention} is really comfy !!!";
+                }
+                else
+                {
+                    message = $"{Context.User.Mention} is really comfy....";
+                }
             }
             else
             {
@@ -85,7 +99,14 @@ namespace EzylBot.Modules
             string message = "";
             if (user == null)
             {
-                message = $"{Context.User.Mention} look very smug";
+                if (Context.Message.ReferencedMessage != null)
+                {
+                    message = $"{Context.Message.ReferencedMessage.Author.Mention}, {Context.User.Mention} look very smug now... OwO";
+                }
+                else
+                {
+                    message = $"{Context.User.Mention} look very smug";
+                }
             }
             else
             {
@@ -120,12 +141,20 @@ namespace EzylBot.Modules
             string message = "";
             if (user == null)
             {
-                message = $"You want some cuddle {Context.User.Mention} ? Okay... ";
+                if (Context.Message.ReferencedMessage != null)
+                {
+                    message = $"{Context.User.Mention} has cuddled {Context.Message.ReferencedMessage.Author.Mention}";
+                }
+                else
+                {
+                    message = $"You want some cuddle {Context.User.Mention} ? Okay... ";
+                }
             }
             else
             {
                 message = $"{Context.User.Mention} has cuddled {user.Mention}";
             }
+            
             await SendGif(url, message, "purr");
         }
 
@@ -137,7 +166,15 @@ namespace EzylBot.Modules
             string message = "";
             if (user == null)
             {
-                message = $"{Context.User.Mention} is crying...";
+
+                if (Context.Message.ReferencedMessage != null)
+                {
+                    message = $"{Context.User.Mention} is crying because of {Context.Message.ReferencedMessage.Author.Mention}";
+                }
+                else
+                {
+                    message = $"{Context.User.Mention} is crying...";
+                }
             }
             else
             {
@@ -154,7 +191,14 @@ namespace EzylBot.Modules
             string message = "";
             if (user == null)
             {
-                message = $"{Context.User.Mention} is dancing !";
+                if (Context.Message.ReferencedMessage != null)
+                {
+                    message = $"{Context.User.Mention} dance with {Context.Message.ReferencedMessage.Author.Mention}";
+                }
+                else
+                {
+                    message = $"{Context.User.Mention} is dancing !";
+                }
             }
             else
             {
@@ -171,7 +215,15 @@ namespace EzylBot.Modules
             string message = "";
             if (user == null)
             {
-                message = $"Okay... I will feed you, {Context.User.Mention}";
+
+                if (Context.Message.ReferencedMessage != null)
+                {
+                    message = $"{Context.User.Mention} has fed {Context.Message.ReferencedMessage.Author.Mention}";
+                }
+                else
+                {
+                    message = $"Okay... I will feed you, {Context.User.Mention}";
+                }
             }
             else
             {
@@ -188,7 +240,14 @@ namespace EzylBot.Modules
             string message = "";
             if (user == null)
             {
-                message = $"You... You need an hug ? {Context.User.Mention} ? Okay... There you go";
+                if (Context.Message.ReferencedMessage != null)
+                {
+                    message = $"{Context.User.Mention} has hugged {Context.Message.ReferencedMessage.Author.Mention}";
+                }
+                else
+                {
+                    message = $"You... You need an hug ? {Context.User.Mention} ? Okay... There you go";
+                }
             }
             else
             {
@@ -205,7 +264,14 @@ namespace EzylBot.Modules
             string message = "";
             if (user == null)
             {
-                message = $"You... You really want that ? {Context.User.Mention} ? Okay...";
+                if (Context.Message.ReferencedMessage != null)
+                {
+                    message = $"{Context.User.Mention} has kissed {Context.Message.ReferencedMessage.Author.Mention}";
+                }
+                else
+                {
+                    message = $"You... You really want that ? {Context.User.Mention} ? Okay...";
+                }
             }
             else
             {
@@ -222,7 +288,14 @@ namespace EzylBot.Modules
             string message = "";
             if (user == null)
             {
-                message = $"You... What ? {Context.User.Mention} ? Are ... Are you okay ?";
+                if (Context.Message.ReferencedMessage != null)
+                {
+                    message = $"{Context.User.Mention} has licked {Context.Message.ReferencedMessage.Author.Mention}";
+                }
+                else
+                {
+                    message = $"You... What ? {Context.User.Mention} ? Are ... Are you okay ?";
+                }
             }
             else
             {
@@ -239,7 +312,14 @@ namespace EzylBot.Modules
             string message = "";
             if (user == null)
             {
-                message = $"You... You need an headpat, {Context.User.Mention} ?\n Okay... There there, you did well <3";
+                if (Context.Message.ReferencedMessage != null)
+                {
+                    message = $"{Context.User.Mention} has headpated {Context.Message.ReferencedMessage.Author.Mention}";
+                }
+                else
+                {
+                    message = $"You... You need an headpat, {Context.User.Mention} ?\n Okay... There there, you did well <3";
+                }
             }
             else
             {
@@ -256,7 +336,14 @@ namespace EzylBot.Modules
             string message = "";
             if (user == null)
             {
-                message = $"You... Are you here {Context.User.Mention} ? Hi hi hi... ";
+                if (Context.Message.ReferencedMessage != null)
+                {
+                    message = $"{Context.User.Mention} has pocked {Context.Message.ReferencedMessage.Author.Mention}";
+                }
+                else
+                {
+                    message = $"You... Are you here {Context.User.Mention} ? Hi hi hi... ";
+                }
             }
             else
             {
@@ -273,7 +360,14 @@ namespace EzylBot.Modules
             string message = "";
             if (user == null)
             {
-                message = $"You... You did a bad thing don't you, {Context.User.Mention} ?";
+                if (Context.Message.ReferencedMessage != null)
+                {
+                    message = $"You did something bad {Context.Message.ReferencedMessage.Author.Mention} don't you ?\n {Context.User.Mention} has slapped you...";
+                }
+                else
+                {
+                    message = $"You... You did a bad thing don't you, {Context.User.Mention} ?";
+                }
             }
             else
             {
@@ -290,7 +384,14 @@ namespace EzylBot.Modules
             string message = "";
             if (user == null)
             {
-                message = $"Hey..., {Context.User.Mention}... Tickle tickle tickle !!";
+                if (Context.Message.ReferencedMessage != null)
+                {
+                    message = $"{Context.User.Mention} has tickled {Context.Message.ReferencedMessage.Author.Mention}";
+                }
+                else
+                {
+                    message = $"Hey..., {Context.User.Mention}... Tickle tickle tickle !!";
+                }
             }
             else
             {

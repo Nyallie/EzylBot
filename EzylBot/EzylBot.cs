@@ -5,9 +5,7 @@ using Discord.WebSocket;
 using EzylBot.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Text;
 using System.Threading.Tasks;
 using RunMode = Discord.Commands.RunMode;
 
@@ -36,10 +34,15 @@ namespace EzylBot
             };
             _clientConfig = new DiscordSocketConfig()
             {
-                GatewayIntents = GatewayIntents.AllUnprivileged,
+                GatewayIntents = GatewayIntents.AllUnprivileged | 
+                GatewayIntents.Guilds | 
+                GatewayIntents.GuildMembers |
+                GatewayIntents.GuildMessageReactions |
+                GatewayIntents.GuildMessages |
+                GatewayIntents.GuildVoiceStates,
                 AlwaysDownloadUsers = true,
                 LogLevel = LogSeverity.Info,
-                MessageCacheSize = 100,
+                MessageCacheSize = 10000,
                 DefaultRetryMode = RetryMode.AlwaysFail
             };
             _client = new DiscordSocketClient(_clientConfig);
