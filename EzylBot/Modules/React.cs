@@ -399,5 +399,29 @@ namespace EzylBot.Modules
             }
             await SendGif(url, message, "purr");
         }
+
+        [Command("blush")]
+        [Summary("blush because of someone with a gif")]
+        public async Task BlushReac(IGuildUser user = null)
+        {
+            string url = _baseurlpurr + "blush/gif";
+            string message = "";
+            if (user == null)
+            {
+                if (Context.Message.ReferencedMessage != null)
+                {
+                    message = $"{Context.User.Mention} is blushing because of {Context.Message.ReferencedMessage.Author.Mention}";
+                }
+                else
+                {
+                    message = $"{Context.User.Mention} is blushing...";
+                }
+            }
+            else
+            {
+                message = $"{Context.User.Mention} made {user.Mention} blush";
+            }
+            await SendGif(url, message, "purr");
+        }
     }
 }

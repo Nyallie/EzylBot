@@ -17,7 +17,7 @@ namespace EzylBot.Services
 
         public async Task<string> GetLinkImagePurr(string url)
         {
-            string imagelink = "";
+            string imagelink;
             HttpClient client = new HttpClient();
             HttpResponseMessage response = await client.GetAsync(url);
             if (response.IsSuccessStatusCode)
@@ -36,7 +36,7 @@ namespace EzylBot.Services
 
         public async Task<string> GetLinkImageNeko(string url)
         {
-            string imagelink = "";
+            string imagelink;
             HttpClient client = new HttpClient();
             HttpResponseMessage response = await client.GetAsync(url);
             if (response.IsSuccessStatusCode)
